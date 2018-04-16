@@ -18,6 +18,8 @@ $factory->define(SaborDeSalgado\User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'phone' => $faker->numberBetween(1111111111, 11999999999),
+        'active' =>$faker->randomElement([1, 2]),
         'remember_token' => str_random(10),
     ];
 });
