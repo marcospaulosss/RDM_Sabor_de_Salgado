@@ -11,8 +11,13 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      this.programationJquary();
+  }
+
+  programationJquary() {
       setTimeout(function() {
           $('#loader-wrapper').hide();
+          $('#transaction').removeClass('scale-out');
       }, 2000);
   }
 }
