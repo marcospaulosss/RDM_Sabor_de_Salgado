@@ -1,0 +1,21 @@
+#transaction{
+  margin-top: 10%;
+}
+
+@media only screen and (min-width: 321px) and (max-width: 639px) {
+  #transaction{
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+  #transaction{
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #transaction{
+    margin-top: 10%;
+  }
+}
