@@ -15,3 +15,8 @@ Route::get('/', function () {
     return view('welcome');
     //return view('spa');
 });
+
+Route::get('/login', function () {
+  return view('welcome');
+  //return view('spa');
+});
