@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \SaborDeSalgado\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \SaborDeSalgado\Http\Middleware\TrustProxies::class,
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**

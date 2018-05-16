@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {LoginService} from "./login.service";
+
 declare var $: any;
 @Component({
   selector: 'app-login',
@@ -8,10 +10,12 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
       this.programationJquary();
+
+
   }
 
   programationJquary() {
@@ -19,5 +23,9 @@ export class LoginComponent implements OnInit {
           $('#loader-wrapper').hide();
           $('#transaction').removeClass('scale-out');
       }, 2000);
+  }
+
+  getNovoRegistro() {
+      this._loginService.postLogin();
   }
 }
