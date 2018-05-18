@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {LoginService} from "./login.service";
+import {Users} from "../class/users";
 
 declare var $: any;
 @Component({
@@ -10,12 +11,12 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
+  user = new Users();
+
   constructor(private _loginService: LoginService) { }
 
   ngOnInit() {
       this.programationJquary();
-
-
   }
 
   programationJquary() {
@@ -27,5 +28,10 @@ export class LoginComponent implements OnInit {
 
   getNovoRegistro() {
       this._loginService.postLogin();
+  }
+
+  login() {
+      this.user.name = "marcos paulo";
+    console.log(this.user.name);
   }
 }

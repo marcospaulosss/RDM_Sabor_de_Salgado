@@ -18,3 +18,5 @@ Route::post('cadastro', ['uses' => 'UserController@store']);
 Route::group(['middleware' => 'auth:api'], function (){
   Route::get('index', ['uses' => 'UserController@index']);
 });
+
+//Route::get('login', ['uses' => 'UserController@index']);

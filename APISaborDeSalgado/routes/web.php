@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-    //return view('spa');
+    return view('spa');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
