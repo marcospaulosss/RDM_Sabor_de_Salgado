@@ -6,6 +6,7 @@ import {HttpModule} from "@angular/http";
 import {LoginComponent} from "./login/login.component";
 import {UsuarioService} from "./usuario.service";
 import {UsuarioRoutingModule} from "./usuario.routing.module";
+import {UsuarioComponent} from "./usuario.component";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {UsuarioRoutingModule} from "./usuario.routing.module";
       UsuarioRoutingModule
   ],
   declarations: [
-      LoginComponent
+      LoginComponent,
+      UsuarioComponent
   ],
     providers: [UsuarioService]
 })
