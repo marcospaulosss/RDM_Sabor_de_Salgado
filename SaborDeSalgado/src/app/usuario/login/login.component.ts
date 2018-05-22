@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {LoginService} from "./login.service";
-import {Users} from "../class/users";
+import {UsuarioService} from "../usuario.service";
+import {Users} from "../../class/users";
 
 declare var $: any;
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   user = new Users();
 
-  constructor(private _loginService: LoginService) { }
+  constructor(private _loginService: UsuarioService) { }
 
   ngOnInit() {
       this.programationJquary();
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-      this.user.name = "marcos paulo";
+      this.user.name = 'marcos paulo';
     console.log(this.user.name);
   }
 }
