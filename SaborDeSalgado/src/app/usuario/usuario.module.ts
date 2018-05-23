@@ -7,6 +7,7 @@ import {LoginComponent} from "./login/login.component";
 import {UsuarioService} from "./usuario.service";
 import {UsuarioRoutingModule} from "./usuario.routing.module";
 import {UsuarioComponent} from "./usuario.component";
+import {LoginResolver} from "./guards/login.resolver";
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import {UsuarioComponent} from "./usuario.component";
       LoginComponent,
       UsuarioComponent
   ],
-    providers: [UsuarioService]
+    providers: [
+        UsuarioService,
+        LoginResolver
+    ]
 })
 export class UsuarioModule { }

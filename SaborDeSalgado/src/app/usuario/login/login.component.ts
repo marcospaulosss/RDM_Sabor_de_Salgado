@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 import {UsuarioService} from "../usuario.service";
 import {Users} from "../../class/users";
+import {Login} from "../../class/login";
 
 declare var $: any;
 @Component({
@@ -13,10 +15,27 @@ export class LoginComponent implements OnInit {
 
   user = new Users();
 
-  constructor(private _loginService: UsuarioService) { }
+  inscricao: any;
+
+    paramsLogin = new Login();
+
+  constructor(
+      private _loginService: UsuarioService,
+      private _route: Router,
+      private _activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
       this.programationJquary();
+
+       this.inscricao = this._activatedRoute.data.subscribe(
+           (info: {login: Login}) => {
+               console.log('Recebendo o obj de login resolve');
+               this.paramsLogin = info.login;
+           }
+       );
+
+       console.log(this.paramsLogin);
   }
 
   programationJquary() {
