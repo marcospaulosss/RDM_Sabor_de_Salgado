@@ -7,7 +7,7 @@ import {LoginResolver} from "./guards/login.resolver";
 
 const usuarioRoutes: Routes = [
   { path: '', component: LoginComponent,
-    resolve: {login: LoginResolver}
+    //resolve: {login: LoginResolver}
   }
 ];
 

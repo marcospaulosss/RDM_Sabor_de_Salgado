@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   inscricao: any;
 
-    paramsLogin = new Login();
+  paramsLogin = new Login();
 
   constructor(
       private _loginService: UsuarioService,
@@ -28,12 +28,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
       this.programationJquary();
 
-       this.inscricao = this._activatedRoute.data.subscribe(
+       /*this.inscricao = this._activatedRoute.data.subscribe(
            (info: {login: Login}) => {
-               console.log('Recebendo o obj de login resolve');
                this.paramsLogin = info.login;
            }
-       );
+       );*/
 
        console.log(this.paramsLogin);
   }

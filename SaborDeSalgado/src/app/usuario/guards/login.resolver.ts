@@ -15,6 +15,6 @@ export class LoginResolver implements Resolve<Login> {
   resolve(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    return this._usuarioService.getSecretLogin();
+    //return this._usuarioService.getSecretLogin();
   }
 }
