@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 import {UsuarioService} from "../usuario.service";
 import {Users} from "../../class/users";
 import {Login} from "../../class/login";
+import {Http} from "@angular/http";
 
 declare var $: any;
 @Component({
@@ -19,10 +21,14 @@ export class LoginComponent implements OnInit {
 
   paramsLogin = new Login();
 
+  formulario: FormGroup;
+
   constructor(
       private _loginService: UsuarioService,
       private _route: Router,
-      private _activatedRoute: ActivatedRoute
+      private _activatedRoute: ActivatedRoute,
+      private _formBuilder: FormBuilder,
+      private _http: Http
   ) { }
 
   ngOnInit() {
@@ -33,6 +39,14 @@ export class LoginComponent implements OnInit {
                this.paramsLogin = info.login;
            }
        );*/
+
+       this.formulario = this._formBuilder.group({
+           grant_type: [this.paramsLogin.type],
+           client_id: [this.paramsLogin.client_id],
+           client_secret: [this.paramsLogin.client_secret],
+           username: [null],
+           password: [null]
+       })
 
        console.log(this.paramsLogin);
   }
@@ -48,8 +62,11 @@ export class LoginComponent implements OnInit {
       this._loginService.postLogin();
   }
 
-  login() {
-      this.user.name = 'marcos paulo';
-    console.log(this.user.name);
-  }
+    onSubmit() {
+      console.log(this.formulario.value);
+
+      this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(this.formulario.value))
+          .map(res => res)
+          .subscribe(dados => console.log(dados));
+    }
 }

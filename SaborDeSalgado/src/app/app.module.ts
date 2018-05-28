@@ -1,11 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {MaterializeModule} from 'angular2-materialize';
 
 import {AppComponent} from './app.component';
 import {AboutComponent} from './about/about.component';
 import {AppRoutingModule} from "./app.routing.module";
+
 
 @NgModule({
     declarations: [
@@ -15,7 +17,9 @@ import {AppRoutingModule} from "./app.routing.module";
     imports: [
         BrowserModule,
         MaterializeModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

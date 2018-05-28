@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 
 import {LoginComponent} from "./login/login.component";
@@ -12,9 +12,9 @@ import {LoginResolver} from "./guards/login.resolver";
 @NgModule({
   imports: [
     CommonModule,
-      FormsModule,
       HttpModule,
-      UsuarioRoutingModule
+      UsuarioRoutingModule,
+      ReactiveFormsModule
   ],
   declarations: [
       LoginComponent,
