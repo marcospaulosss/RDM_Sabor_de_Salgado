@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {UsuarioService} from "../usuario.service";
 import {Users} from "../../class/users";
 import {Login} from "../../class/login";
-import {Http} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 
 declare var $: any;
 @Component({
@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   paramsLogin = new Login();
 
   formulario: FormGroup;
+
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private options = new RequestOptions({ headers: this.headers });
 
   constructor(
       private _loginService: UsuarioService,
@@ -65,7 +68,7 @@ export class LoginComponent implements OnInit {
     onSubmit() {
       console.log(this.formulario.value);
 
-      this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(this.formulario.value))
+      this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(this.formulario.value), this.options)
           .map(res => res)
           .subscribe(dados => console.log(dados));
     }
