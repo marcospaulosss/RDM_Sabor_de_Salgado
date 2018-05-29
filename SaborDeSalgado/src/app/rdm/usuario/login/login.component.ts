@@ -3,9 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 import {UsuarioService} from "../usuario.service";
-import {Users} from "../../class/users";
-import {Login} from "../../class/login";
-import {Http, Headers, RequestOptions} from "@angular/http";
+import {Login} from "../../../class/login";
+import {Users} from "../../../class/users";
 
 declare var $: any;
 @Component({
@@ -23,15 +22,11 @@ export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
 
-  private headers = new Headers({ 'Content-Type': 'application/json' });
-  private options = new RequestOptions({ headers: this.headers });
-
   constructor(
       private _loginService: UsuarioService,
       private _route: Router,
       private _activatedRoute: ActivatedRoute,
-      private _formBuilder: FormBuilder,
-      private _http: Http
+      private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -62,14 +57,10 @@ export class LoginComponent implements OnInit {
   }
 
   getNovoRegistro() {
-      this._loginService.postLogin();
+      //this._loginService.postLogin();
   }
 
     onSubmit() {
-      console.log(this.formulario.value);
-
-      this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(this.formulario.value), this.options)
-          .map(res => res)
-          .subscribe(dados => console.log(dados));
+      this._loginService.postLogin(this.formulario);
     }
 }
