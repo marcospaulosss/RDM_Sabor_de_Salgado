@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as $ from 'jquery';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -39,18 +39,18 @@ export class HeaderComponent implements OnInit {
     }
 
     programationJquary() {
-        //TELA FULLSCRIN PARA NAVEGADORES
-        $('.toggle-fullscreen').click(function() {
-            switch (navigator.appCodeName) {
-                case 'Mozilla':
-                    if (!document.webkitIsFullScreen)
-                        document.documentElement.webkitRequestFullScreen();
-                    else
-                        document.webkitCancelFullScreen();
-                break;
-            }
+        // Commom, Translation & Horizontal Dropdown
+        $('.dropdown-button, .translation-button, .dropdown-menu').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false,
+            hover: true,
+            gutter: 0,
+            belowOrigin: true,
+            alignment: 'left',
+            stopPropagation: false
         });
-
+        // Notification, Profile & Settings Dropdown
         $('.notification-button, .profile-button, .dropdown-settings').dropdown({
             inDuration: 300,
             outDuration: 225,
@@ -61,5 +61,20 @@ export class HeaderComponent implements OnInit {
             alignment: 'right',
             stopPropagation: false
         });
+
+        /*TELA FULLSCRIN PARA NAVEGADORES*/
+        $('.toggle-fullscreen').click(function() {
+            switch (navigator.appCodeName) {
+                case 'Mozilla':
+                    if (document.webkitIsFullScreen) {
+                        document.webkitCancelFullScreen();
+                    } else {
+                        document.documentElement.webkitRequestFullScreen();
+                    }
+                    break;
+            }
+        });
+
+        $('.historico').sideNav({edge: 'right'});
     }
 }
