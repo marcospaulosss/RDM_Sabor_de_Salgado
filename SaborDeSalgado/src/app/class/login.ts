@@ -2,6 +2,8 @@ export class Login {
     private _type: string;
     private _client_id: number;
     private _client_secret: string;
+    private _token: string;
+    private _refreshToken: string;
 
     constructor() {
         this._type = 'password';
@@ -9,6 +11,22 @@ export class Login {
         this._client_secret = 'KQKya1JeMx9waTQcbgd0CXmv1rau0dnCjRxJtwXv';
     }
 
+
+    get token(): string {
+        return this._token;
+    }
+
+    set token(value: string) {
+        this._token = value;
+    }
+
+    get refreshToken(): string {
+        return this._refreshToken;
+    }
+
+    set refreshToken(value: string) {
+        this._refreshToken = value;
+    }
 
     get type(): string {
         return this._type;

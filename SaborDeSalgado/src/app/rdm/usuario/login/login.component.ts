@@ -32,21 +32,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
       this.programationJquary();
 
-       /*this.inscricao = this._activatedRoute.data.subscribe(
-           (info: {login: Login}) => {
-               this.paramsLogin = info.login;
-           }
-       );*/
-
        this.formulario = this._formBuilder.group({
            grant_type: [this.paramsLogin.type],
            client_id: [this.paramsLogin.client_id],
            client_secret: [this.paramsLogin.client_secret],
            username: [null],
            password: [null]
-       })
-
-       console.log(this.paramsLogin);
+       });
   }
 
   programationJquary() {
