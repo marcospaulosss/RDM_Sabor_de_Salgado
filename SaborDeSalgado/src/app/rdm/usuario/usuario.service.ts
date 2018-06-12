@@ -19,17 +19,6 @@ export class UsuarioService {
   ) { console.log('usuario service'); }
 
   postLogin(form: FormGroup) {
-      this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(form.value), this.options)
-          .map(res => res)
-          .subscribe(dados => {
-              let result = dados.json()
-
-              this.login.token = result.access_token;
-              this.login.refreshToken = result.refresh_token;
-
-              this.tokenAcesso.emit(this.login);
-
-              console.log(this.login);
-          });
+      return this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(form.value), this.options);
   }
 }
