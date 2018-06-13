@@ -6,6 +6,8 @@ import {UsuarioService} from "../usuario.service";
 import {Login} from "../../../class/login";
 
 declare var $: any;
+declare var lodingJquary: any;
+declare var showAlert: any;
 
 @Component({
     selector: 'app-login',
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.lodingJquary(false);
+        lodingJquary(false);
 
         this.formulario = this._formBuilder.group({
             grant_type: [this.paramsLogin.type],
@@ -42,46 +44,27 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    lodingJquary(ativar) {
-        if (ativar === true) {
-            $('#loader-wrapper').show();
-            $('#transaction').addClass('scale-out');
-        } else {
-            setTimeout(function () {
-                $('#loader-wrapper').hide();
-                $('#transaction').removeClass('scale-out');
-            }, 2000);
-        }
-    }
-
     getNovoRegistro() {
         // this._loginService.postLogin();
     }
 
     onSubmit() {
-        this.lodingJquary(true);
+        lodingJquary(true);
 
         // VERIFICANDO O RETORNO DO LOGIN DO USUARIO
         this.result = this._loginService.postLogin(this.formulario)
-            .map(res => res)
             .subscribe(dados => {
-                if (dados.status === 200) {
-                    // ACESSO PERMITIDO
-
-                    let result = dados.json();
-
-                    this.login.token = result.access_token;
-                    this.login.refreshToken = result.refresh_token;
+                // ACESSO PERMITIDO
+                    this.login.token = dados.access_token;
+                    this.login.refreshToken = dados.refresh_token;
 
                     this._loginService.tokenAcesso.emit(this.login);
 
                     this._route.navigate(['/Admin/home']);
-                } else {
-                    // ACESSO NEGADO
-
-                    this._route.navigate(['/Admin']);
-                }
-
+            }, error => {
+                // ACESSO NEGADO
+                lodingJquary(false);
+                showAlert('#login-alert');
             });
     }
 }
