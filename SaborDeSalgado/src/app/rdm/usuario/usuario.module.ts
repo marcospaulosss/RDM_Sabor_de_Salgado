@@ -6,7 +6,7 @@ import {HttpModule} from "@angular/http";
 import {UsuarioRoutingModule} from "./usuario.routing.module";
 import {LoginComponent} from "./login/login.component";
 import {UsuarioComponent} from "./usuario.component";
-import {UsuarioService} from "./usuario.service";
+//import {UsuarioService} from "./usuario.service";
 
 
 
@@ -22,7 +22,7 @@ import {UsuarioService} from "./usuario.service";
       UsuarioComponent
   ],
     providers: [
-        UsuarioService
+        //UsuarioService
     ]
 })
 export class UsuarioModule { }

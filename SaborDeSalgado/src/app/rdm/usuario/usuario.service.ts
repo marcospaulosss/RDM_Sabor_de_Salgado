@@ -1,11 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import {FormGroup} from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Login} from '../../class/login';
-import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UsuarioService {
