@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import {UsuarioService} from '../usuario.service';
 import {Login} from '../../../class/login';
 import {isNull} from 'util';
 import {isUndefined} from 'ngx-bootstrap/chronos/utils/type-checks';
+import {UsuarioService} from "../usuario.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -24,13 +24,7 @@ export class AuthGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
-        this._usuarioService.tokenAcesso.subscribe(
-            dados => {
-              this.login = dados;
-            }
-        );
-
-        if (!isUndefined(this.login) && this.login.token && !isNull(this.login.token) && this.login.refreshToken && !isNull(this.login.refreshToken)) {
+        if (!isUndefined(this._usuarioService.login) && this._usuarioService.login.token && !isNull(this._usuarioService.login.token) && this._usuarioService.login.refreshToken && !isNull(this._usuarioService.login.refreshToken)) {
           return true;
         }
 

@@ -15,7 +15,7 @@ export class UsuarioService {
 
     login = new Login();
 
-    tokenAcesso = new EventEmitter<Login>();
+    emitirTokenAcesso = new EventEmitter<Login>();
 
   constructor(
       private _http: Http
@@ -23,6 +23,6 @@ export class UsuarioService {
 
   postLogin(form: FormGroup): Observable<any> {
       return this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(form.value), this.options)
-          .map((response:any) => response.json());
+          .map((response: any) => response.json());
   }
 }

@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         private _activatedRoute: ActivatedRoute,
         private _formBuilder: FormBuilder,
     ) {
+        console.log('login componet');
     }
 
     ngOnInit() {
@@ -58,7 +59,8 @@ export class LoginComponent implements OnInit {
                     this.login.token = dados.access_token;
                     this.login.refreshToken = dados.refresh_token;
 
-                    this._loginService.tokenAcesso.emit(this.login);
+                    this._loginService.emitirTokenAcesso.emit(this.login);
+                    this._loginService.login = this.login;
 
                     this._route.navigate(['/Admin/home']);
             }, error => {
