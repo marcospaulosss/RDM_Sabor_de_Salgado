@@ -6,7 +6,7 @@ const rdmRoutes: Routes = [
     {path: '', loadChildren: 'app/rdm/usuario/usuario.module#UsuarioModule'},
     {path: 'home',
         loadChildren: 'app/rdm/home/home.module#HomeModule',
-        canActivate: [AuthGuard]
+        //canActivate: [AuthGuard]
     }
 ];
 

@@ -5,6 +5,7 @@ import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home.routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MenuComponent} from './menu/menu.component';
+import {ProfileComponent} from '../usuario/profile/profile.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import {MenuComponent} from './menu/menu.component';
     declarations: [
         HomeComponent,
         HeaderComponent,
-        MenuComponent
+        MenuComponent,
+        ProfileComponent
     ],
     providers: [
     ]
