@@ -8,6 +8,7 @@ import {Login} from "../../../class/login";
 declare var $: any;
 declare var lodingJquary: any;
 declare var showAlert: any;
+declare var colorBody: any;
 
 @Component({
     selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         lodingJquary(false);
+        colorBody('cyan');
 
         this.formulario = this._formBuilder.group({
             grant_type: [this.paramsLogin.type],

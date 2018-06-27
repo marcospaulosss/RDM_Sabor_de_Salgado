@@ -31,3 +31,7 @@ function menuComponent() {
 
     $('.collapsible').collapsible();
 }
+
+function colorBody(color) {
+    $('body').addClass(color);
+}
