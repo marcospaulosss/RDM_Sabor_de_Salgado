@@ -2,15 +2,32 @@ body {
   background-color: white;
 }
 
+img.responsive-img, video.responsive-video {
+  max-width: 100%;
+  height: auto;
+}
+
+#calendar {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: red;
+}
+
+@media only screen and (max-width: 321px) {
+  #imgPerfil {
+    margin-top: -70px;
+  }
+}
+
 @media only screen and (min-width: 321px) and (max-width: 639px) {
-  #principal {
-    //margin-left: 250px;
+  #imgPerfil {
+    margin-top: -60px;
   }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 768px) {
-  #principal {
-    //margin-left: 250px;
+  #imgPerfil {
+    margin-top: -60px;
   }
 }
 

@@ -1,4 +1,3 @@
-
 function lodingJquary(ativar) {
     if (ativar === true) {
         $('#loader-wrapper').show();
@@ -34,4 +33,8 @@ function menuComponent() {
 
 function colorBody(color) {
     $('body').addClass(color);
+}
+
+function paralaxMaterialize() {
+    $('.parallax').parallax();
 }

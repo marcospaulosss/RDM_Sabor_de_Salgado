@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 declare var colorBody: any;
+declare var paralaxMaterialize: any;
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
       colorBody('white');
+      paralaxMaterialize();
   }
 
 }
