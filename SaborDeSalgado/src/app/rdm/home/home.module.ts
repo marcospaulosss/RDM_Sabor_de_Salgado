@@ -5,18 +5,18 @@ import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home.routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MenuComponent} from './menu/menu.component';
-import {ProfileComponent} from '../usuario/profile/profile.component';
+import {UsuarioModule} from '../usuario/usuario.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        UsuarioModule
     ],
     declarations: [
         HomeComponent,
         HeaderComponent,
-        MenuComponent,
-        ProfileComponent
+        MenuComponent
     ],
     providers: [
     ]
