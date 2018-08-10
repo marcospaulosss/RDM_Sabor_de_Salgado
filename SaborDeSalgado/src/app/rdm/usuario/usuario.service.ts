@@ -22,7 +22,13 @@ export class UsuarioService {
   ) { console.log('usuario service'); }
 
   postLogin(form: FormGroup): Observable<any> {
+      console.log(form);
       return this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(form.value), this.options)
+          .map((response: any) => response.json());
+  }
+
+  postUsuario(form: FormGroup, token): Observable<any> {
+      return this._http.post('http://127.0.0.1:8000/user', JSON.stringify(form.value), this.options)
           .map((response: any) => response.json());
   }
 }

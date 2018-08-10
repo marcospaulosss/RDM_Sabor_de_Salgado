@@ -3,19 +3,41 @@
 namespace SaborDeSalgado\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SaborDeSalgado\User;
+use SaborDeSalgado\Repositories\UserRepository;
+use SaborDeSalgado\Services\UserService;
 
 class UserController extends Controller
 {
-    /**
+
+  /**
+   * @var UserRepository
+   */
+  private $repository;
+
+  /**
+   * @var UserService
+   */
+  private $service;
+
+  /**
+   * UserController constructor.
+   * @param UserRepository $repository
+   * @param UserService $service
+   */
+  public function __construct(UserRepository $repository, UserService $service)
+  {
+    $this->repository = $repository;
+    $this->service = $service;
+  }
+
+  /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-      echo "teste";die;
-        //return response()->json(['name' => Auth::user()->name]);
+        return $this->repository->all();
     }
 
     /**
@@ -36,11 +58,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->all();
-        $user['password'] = bcrypt($user['password']);
-        User::create($user);
-
-        return response()->json(['sucess' => true]);
+        return $this->service->create($request->all());
     }
 
     /**

@@ -64,11 +64,20 @@ export class LoginComponent implements OnInit {
                     this._loginService.emitirTokenAcesso.emit(this.login);
                     this._loginService.login = this.login;
 
+                let teste = this._loginService.postUsuario(this.formulario, this.login.token)
+                    .subscribe(usuario => {
+                        console.log(usuario);
+                    }, error => {
+                        console.log(error);
+                    });
+
                     this._route.navigate(['/Admin/home']);
             }, error => {
                 // ACESSO NEGADO
                 lodingJquary(false);
                 showAlert('#login-alert');
             });
+
+
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from "../../usuario.service";
 
 @Component({
   selector: 'app-form-usuario',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _usuarioService: UsuarioService) { console.log(this._usuarioService); }
 
   ngOnInit() {
   }

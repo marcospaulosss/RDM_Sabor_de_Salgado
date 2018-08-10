@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -159,6 +160,7 @@ return [
         // SaborDeSalgado\Providers\BroadcastServiceProvider::class,
         SaborDeSalgado\Providers\EventServiceProvider::class,
         SaborDeSalgado\Providers\RouteServiceProvider::class,
+        SaborDeSalgado\Providers\SaborDeSalgadoRepositoryProvider::class,
 
     ],
 

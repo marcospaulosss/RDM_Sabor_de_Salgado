@@ -11,12 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('spa');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/params', 'AssociationController@index')->name('params');
+Route::group(['middleware' => 'auth'], function () {
+  Route::resource('User', 'UserController', ['except' => ['create', 'edit']]);
+});

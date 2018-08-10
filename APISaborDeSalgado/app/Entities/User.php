@@ -1,6 +1,6 @@
 <?php
 
-namespace SaborDeSalgado;
+namespace SaborDeSalgado\Entities;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;

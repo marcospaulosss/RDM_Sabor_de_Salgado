@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::post('cadastro', ['uses' => 'UserController@store']);
 
 Route::group(['middleware' => 'auth:api'], function (){
-  Route::get('index', ['uses' => 'UserController@index']);
+  Route::post('user', ['user' => 'UserController@index']);
 });
 
 //Route::get('login', ['uses' => 'UserController@index']);
