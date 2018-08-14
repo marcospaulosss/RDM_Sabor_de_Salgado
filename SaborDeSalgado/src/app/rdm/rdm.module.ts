@@ -7,6 +7,7 @@ import {RdmComponent} from './rdm.component';
 import {RdmRoutingModule} from './rdm.routing.module';
 import {UsuarioService} from './usuario/usuario.service';
 import {AuthGuard} from './usuario/guards/auth.guard';
+import {LoginResolver} from './usuario/guards/login.resolver';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {AuthGuard} from './usuario/guards/auth.guard';
     ],
     providers: [
         UsuarioService,
-        AuthGuard
+        AuthGuard,
+        LoginResolver
     ]
 })
 export class RdmModule { }

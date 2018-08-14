@@ -10,16 +10,21 @@ import {Login} from '../../class/login';
 @Injectable()
 export class UsuarioService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headers });
-
     login = new Login();
+    private headers = new Headers();
+    private options: RequestOptions;
 
     emitirTokenAcesso = new EventEmitter<Login>();
 
-  constructor(
-      private _http: Http
-  ) { console.log('usuario service'); }
+  constructor(private _http: Http) {
+      console.log('usuario service');
+      this.headers.append('Content-Type', 'application/json');
+      this.options = new RequestOptions({ headers: this.headers });
+  }
+
+  setHeaders() {
+      this.headers.append('Authorization', 'Bearer ' + this.login.token);
+  }
 
   postLogin(form: FormGroup): Observable<any> {
       console.log(form);
@@ -27,8 +32,9 @@ export class UsuarioService {
           .map((response: any) => response.json());
   }
 
-  postUsuario(form: FormGroup, token): Observable<any> {
-      return this._http.post('http://127.0.0.1:8000/user', JSON.stringify(form.value), this.options)
+  postUsuario(): Observable<any> {
+      console.log(this.headers);
+      return this._http.get('http://127.0.0.1:8000/User', this.options)
           .map((response: any) => response.json());
   }
 }
