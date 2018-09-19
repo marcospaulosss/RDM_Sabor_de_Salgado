@@ -64,6 +64,26 @@ class UserService
         'message' => $e->getMessageBag()
       ];
     }
+  }
 
+  public function login(array $data)
+  {
+    try {
+      $result = $this->repository->findWhere([
+        'email' => $data['email'],
+        'active' => 1
+      ]);
+
+      if ($result->count() > 0)
+        return $result->all();
+      else
+        return ['error' => true, 'message' => 'Usuário não encontrado'];
+
+    } catch (\Exception $e) {
+      return [
+        'error' => true,
+        'message' => $e->getMessage()
+      ];
+    }
   }
 }

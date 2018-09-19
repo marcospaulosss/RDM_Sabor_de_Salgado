@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import {FormGroup} from '@angular/forms';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Login} from '../../class/login';
+import {Users} from "../../class/users";
 
 @Injectable()
 export class UsuarioService {
@@ -15,6 +16,10 @@ export class UsuarioService {
     private options: RequestOptions;
 
     emitirTokenAcesso = new EventEmitter<Login>();
+
+    username: string;
+
+    emitirUsuario = new EventEmitter<Users>();
 
   constructor(private _http: Http) {
       console.log('usuario service');
@@ -27,14 +32,17 @@ export class UsuarioService {
   }
 
   postLogin(form: FormGroup): Observable<any> {
-      console.log(form);
+      this.username = form.value.username;
       return this._http.post('http://127.0.0.1:8000/oauth/token', JSON.stringify(form.value), this.options)
           .map((response: any) => response.json());
   }
 
   postUsuario(): Observable<any> {
-      console.log(this.headers);
-      return this._http.get('http://127.0.0.1:8000/User', this.options)
+      let params = {
+        'email': this.username
+      };
+
+      return this._http.post('http://127.0.0.1:8000/Login', JSON.stringify(params), this.options)
           .map((response: any) => response.json());
   }
 }

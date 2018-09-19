@@ -105,4 +105,13 @@ class UserController extends Controller
     {
         //
     }
+
+  /**
+   * @param Request $request
+   * @return \Illuminate\Http\Response
+   */
+  public function login(Request $request)
+  {
+    return $this->service->login($request->all());
+  }
 }

@@ -11,8 +11,12 @@
 |
 */
 
+
+
 Auth::routes();
 
+
 Route::group(['middleware' => 'auth'], function () {
+  Route::post('Login', 'UserController@login');
   Route::resource('User', 'UserController', ['except' => ['create', 'edit']]);
 });

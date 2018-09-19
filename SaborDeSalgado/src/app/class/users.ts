@@ -14,43 +14,43 @@ export class Users {
 
     }
 
-    get id(): number {
+    public get id(): number {
         return this._id;
     }
 
-    set id(value: number) {
+    public set id(value: number) {
         this._id = value;
     }
 
-    get email(): string {
+    public get email(): string {
         return this._email;
     }
 
-    set email(value: string) {
+    public set email(value: string) {
         this._email = value;
     }
 
-    get phone(): string {
+    public get phone(): string {
         return this._phone;
     }
 
-    set phone(value: string) {
+    public set phone(value: string) {
         this._phone = value;
     }
 
-    get password(): string {
+    public get password(): string {
         return this._password;
     }
 
-    set password(value: string) {
+    public set password(value: string) {
         this._password = value;
     }
 
-    get remember_token(): string {
+    public get remember_token(): string {
         return this._remember_token;
     }
 
-    set remember_token(value: string) {
+    public set remember_token(value: string) {
         this._remember_token = value;
     }
 }
